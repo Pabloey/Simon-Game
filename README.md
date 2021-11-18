@@ -12,6 +12,8 @@
 
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F61OnA6pSo6L._AC_SL1001_.jpg&f=1&nofb=1" width="200">
 
+This is the Simon Says game that you grew up with! When Simons click on blue, you click blue. If Simon clicks blue, green, yellow. You click blue, green, yellow or you lose. Simple enough?
+
 This is the fun game you played with when maybe you were a small bean.
 
 Remaking it so you can enjoy online at any time. Drive you crazy again because you can't beat your High Score.
