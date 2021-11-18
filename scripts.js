@@ -7,30 +7,37 @@ const greenButton = document.getElementById("green-button");
 const redButton = document.getElementById("red-button");
 const blueButton = document.getElementById("blue-button");
 const testButton = document.getElementById("test-button");
+const startButton = document.getElementById("start-button");
+const loseDisplay = document.getElementById("lose-display");
 let scoreDisplay = document.getElementById("score-display");
 let cpuPicks = [];
 let playerPicks = [];
 
 // Player can click on every button through these Event Listeners.
+//Player clicks register into an array, playerPicks[]
 
 yellowButton.addEventListener("click", () => {
   console.log("Clicked Yellow Button");
+  playerPicks.push(0);
 });
 
 greenButton.addEventListener("click", () => {
   console.log("Clicked Green Button");
+  playerPicks.push(1);
 });
 
 redButton.addEventListener("click", () => {
   console.log("Clicked Red Button");
+  playerPicks.push(2);
 });
 
 blueButton.addEventListener("click", () => {
   console.log("Clicked blue Button");
+  playerPicks.push(3);
 });
 
 //Computer pulls random number from RNG to choose color
-//Computer pushes a number to array cpuPicks
+//Computer pushes a number to array cpuPicks[]
 let computerChoice = () => {
   let RNG = Math.floor(Math.random() * 4);
   if (RNG === 0) {
@@ -47,6 +54,7 @@ let computerChoice = () => {
     cpuPicks.push(3);
   }
 };
+
 
 testButton.addEventListener("click", () => {
   computerChoice();
