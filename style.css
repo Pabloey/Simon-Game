@@ -1,0 +1,20 @@
+button {
+  color: white;
+}
+
+#green-button {
+  background-color: green;
+}
+
+#yellow-button {
+  background-color: yellow;
+  color: black;
+}
+
+#red-button {
+  background-color: red;
+}
+
+#blue-button {
+  background-color: blue;
+}
