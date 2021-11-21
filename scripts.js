@@ -11,7 +11,7 @@ const startButton = document.getElementById("start-button");
 const textDisplay = document.getElementById("text-display");
 let scoreDisplay = document.getElementById("score-display");
 
-let score = 4;
+let score = 0;
 let cpuPicks = [];
 let playerPicks = [];
 let turn = false;
@@ -23,6 +23,7 @@ let loopStop;
 // Need to loop through numbers everytime. Make a loop that reads from start of Array and stops when it reaches playerPicks.length + 1
 let computerChoice = () => {
   if (turn === false) {
+    console.log("Score before number: " + score);
     loopTimes = 0;
     score++;
     scoreDisplay.innerText = score;
@@ -47,22 +48,37 @@ let computerChoice = () => {
     }, 1000);
   }
   turn = true;
-  console.log(cpuPicks);
-  console.log("Score number: " + score);
-  console.log("Loop number " + loopTimes);
 };
 
 //Player Functions
 // Three condtions to set
-// If player guesses correctly, but still not at last round. Keep going
+// If player guesses correctly, but still not at last round. Keep going = first (if)
 // If player guess correctly and array is equal to round amount. Win
 // If player guesses incorretly, reset game to 0, clear arrays.
 let testChoice = () => {
-  if (playerPicks.length === cpuPicks.length) {
-    console.log("Good job, you win");
+  if (
+    playerPicks.length === cpuPicks.length &&
+    playerPicks[score - 1] === cpuPicks[score - 1]
+  ) {
+    console.log("You win");
+    turn = false;
+    playGame();
+    clearInterval(loopStop);
+  } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
+    console.log("Good job, go next round");
+    turn = false;
+    computerChoice();
+    playerPicks = [];
+    clearInterval(loopStop);
+    console.log(turn);
+  } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
+    console.log("You lose");
+    clearInterval(loopStop);
+    playGame();
   }
+  console.log(playerPicks);
 };
-console.log(playerPicks);
+
 // Event Listeners
 
 // Player can click on every button through these Event Listeners.
@@ -99,17 +115,19 @@ testButton.addEventListener("click", () => {
 
 // Play Game randomizes 21 numbers in cpuPicks array, runs computerChoice.
 let playGame = () => {
-  for (let i = 0; i < 21; i++) {
+  clearInterval(loopStop);
+  cpuPicks = [];
+  playerPicks = [];
+  for (let i = 0; i < 3; i++) {
     let RNG = Math.floor(Math.random() * 4);
     cpuPicks.push(RNG);
   }
+  console.log(cpuPicks);
+  score = 0;
   computerChoice();
 };
 
 startButton.addEventListener("click", () => {
-  cpuPicks = [];
-  playerPicks = [];
   turn = false;
-  score = 4;
   playGame();
 });
