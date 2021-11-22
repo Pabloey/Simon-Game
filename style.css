@@ -7,10 +7,6 @@ body {
   text-align: center;
 }
 
-/* div {
-  pointer-events: none;
-} */
-
 #main-grid {
   display: grid;
   justify-content: center;
@@ -23,16 +19,24 @@ body {
   background-color: green;
 }
 
+#green-button:hover {
+  background-color: white;
+}
+
 #yellow-button {
-  background-color: #F57C00;
+  background-color: #f57c00;
   color: black;
 }
 
-#clicked-yellow-button {
+#yellow-button:hover {
+  background-color: white;
 }
 
 #red-button {
   background-color: red;
+}
+#red-button:hover {
+  background-color: white;
 }
 
 #blue-button {
@@ -40,7 +44,14 @@ body {
   color: white;
 }
 
+#blue-button:hover {
+  background-color: white;
+  color: white;
+}
+
 .all-buttons {
   padding: 100px;
-  border: ;
+  border: 5px solid black;
+  border-radius: 10%;
+  transition: 0.25s;
 }

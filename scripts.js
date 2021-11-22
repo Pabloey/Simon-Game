@@ -1,11 +1,12 @@
 //Smoke test
 console.log("hello, javascript still working");
 
-// Main components of game DOM
+//////////////////// Main Components/DOM ////////////////////
 const yellowButton = document.getElementById("yellow-button");
 const greenButton = document.getElementById("green-button");
 const redButton = document.getElementById("red-button");
 const blueButton = document.getElementById("blue-button");
+const allButton = document.getElementById("main-grid");
 const testButton = document.getElementById("test-button");
 const startButton = document.getElementById("start-button");
 const textDisplay = document.getElementById("text-display");
@@ -19,7 +20,11 @@ let winOrLose = true;
 let loopTimes = 0;
 let loopStop;
 
+//////////////////// Functions ////////////////////
+
 // Play Game randomizes 21 numbers in cpuPicks array, runs computerChoice.
+let standBy = () => {};
+
 let playGame = () => {
   clearInterval(loopStop);
   cpuPicks = [];
@@ -28,7 +33,6 @@ let playGame = () => {
     let RNG = Math.floor(Math.random() * 4);
     cpuPicks.push(RNG);
   }
-  console.log(cpuPicks);
   score = 0;
   turn = false;
   computerChoice();
@@ -39,61 +43,115 @@ let blinkGreen = () => {
   greenButton.style.backgroundColor = "#9EE5DD";
   setTimeout(() => {
     greenButton.style.backgroundColor = "green";
-  }, 500);
+  }, 400);
 };
 
 let blinkYellow = () => {
   yellowButton.style.backgroundColor = "yellow";
   setTimeout(() => {
     yellowButton.style.backgroundColor = "#F57C00";
-  }, 500);
+  }, 400);
 };
 
 let blinkRed = () => {
   redButton.style.backgroundColor = "#EE9781";
   setTimeout(() => {
     redButton.style.backgroundColor = "red";
-  }, 500);
+  }, 400);
 };
 
 let blinkBlue = () => {
   blueButton.style.backgroundColor = "#9EE5DD";
   setTimeout(() => {
     blueButton.style.backgroundColor = "blue";
-  }, 500);
+  }, 400);
 };
 
 // Computer reads through predetermined Array at start of game.
+// Game speeds up after round 5 and
 let computerChoice = () => {
   if (turn === false) {
-    console.log("Score before number: " + score);
     loopTimes = 0;
     score++;
     scoreDisplay.innerText = score;
-    loopStop = setInterval(() => {
-      if (loopTimes < score) {
-        if (cpuPicks[loopTimes] === 0) {
-          blinkGreen();
-          console.log("Green Clicked");
-        }
-        if (cpuPicks[loopTimes] === 1) {
-          blinkYellow();
-          console.log("Yellow Clicked");
-        }
-        if (cpuPicks[loopTimes] === 2) {
-          blinkRed();
-          console.log("Red Clicked");
-        }
-        if (cpuPicks[loopTimes] === 3) {
-          blinkBlue();
-          console.log("Blue Clicked");
-        } else if (loopTimes === score) {
-          console.log("Players Turn");
-        }
-        loopTimes++;
-      }
-    }, 1000);
     turn = true;
+    if (score <= 5) {
+      loopStop = setInterval(() => {
+        if (loopTimes < score) {
+          if (cpuPicks[loopTimes] === 0) {
+            blinkGreen();
+          }
+          if (cpuPicks[loopTimes] === 1) {
+            blinkYellow();
+          }
+          if (cpuPicks[loopTimes] === 2) {
+            blinkRed();
+          }
+          if (cpuPicks[loopTimes] === 3) {
+            blinkBlue();
+          } else if (loopTimes === score) {
+          }
+          loopTimes++;
+        }
+      }, 1000);
+    } else if (score > 5 && score <= 9) {
+      loopStop = setInterval(() => {
+        if (loopTimes < score) {
+          if (cpuPicks[loopTimes] === 0) {
+            blinkGreen();
+          }
+          if (cpuPicks[loopTimes] === 1) {
+            blinkYellow();
+          }
+          if (cpuPicks[loopTimes] === 2) {
+            blinkRed();
+          }
+          if (cpuPicks[loopTimes] === 3) {
+            blinkBlue();
+          } else if (loopTimes === score) {
+          }
+          loopTimes++;
+        }
+      }, 900);
+    } else if (score > 9 && score <= 13) {
+      loopStop = setInterval(() => {
+        if (loopTimes < score) {
+          if (cpuPicks[loopTimes] === 0) {
+            blinkGreen();
+          }
+          if (cpuPicks[loopTimes] === 1) {
+            blinkYellow();
+          }
+          if (cpuPicks[loopTimes] === 2) {
+            blinkRed();
+          }
+          if (cpuPicks[loopTimes] === 3) {
+            blinkBlue();
+          } else if (loopTimes === score) {
+          }
+          loopTimes++;
+        }
+      }, 700);
+    } else if (score > 13) {
+      loopStop = setInterval(() => {
+        if (loopTimes < score) {
+          if (cpuPicks[loopTimes] === 0) {
+            blinkGreen();
+          }
+          if (cpuPicks[loopTimes] === 1) {
+            blinkYellow();
+          }
+          if (cpuPicks[loopTimes] === 2) {
+            blinkRed();
+          }
+          if (cpuPicks[loopTimes] === 3) {
+            blinkBlue();
+          } else if (loopTimes === score) {
+          }
+          loopTimes++;
+        }
+      }, 600);
+    }
   }
 };
 
@@ -109,6 +167,10 @@ let testChoice = () => {
       playGame();
     }, 1000);
     clearInterval(loopStop);
+  } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
+    console.log("You lose");
+    // You lost! Press start to play again.
+    clearInterval(loopStop);
   } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
     console.log("Good job, go next round");
     // Good job go next round!
@@ -119,15 +181,11 @@ let testChoice = () => {
     playerPicks = [];
     clearInterval(loopStop);
     console.log(turn);
-  } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
-    console.log("You lose");
-    // You lost! Press start to play again.
-    clearInterval(loopStop);
   }
   console.log(playerPicks.length);
 };
 
-// Event Listeners
+//////////////////// Event Listeners ////////////////////
 
 // Player can click on every button through these Event Listeners.
 greenButton.addEventListener("click", () => {
