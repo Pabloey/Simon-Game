@@ -43,9 +43,9 @@ let blinkGreen = () => {
 };
 
 let blinkYellow = () => {
-  yellowButton.style.backgroundColor = "#yellow";
+  yellowButton.style.backgroundColor = "yellow";
   setTimeout(() => {
-    yellowButton.style.backgroundColor = "#ffd000";
+    yellowButton.style.backgroundColor = "#F57C00";
   }, 500);
 };
 
@@ -102,26 +102,26 @@ let computerChoice = () => {
 // If player guess correctly and array is equal to round amount. Win = second (else if)
 // If player guesses incorretly, reset game to 0, clear arrays. Lose = third (else if)
 let testChoice = () => {
-  if (
-    playerPicks.length === cpuPicks.length &&
-    playerPicks[score - 1] === cpuPicks[score - 1]
-  ) {
+  if (playerPicks.length === cpuPicks.length && playerPicks[score - 1] === cpuPicks[score - 1]) {
     console.log("You win");
     turn = false;
-    playGame();
+    setTimeout(() => {
+      playGame();
+    }, 1000);
     clearInterval(loopStop);
   } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
     console.log("Good job, go next round");
+    // Good job go next round!
     turn = false;
-    computerChoice();
+    setTimeout(() => {
+      computerChoice();
+    }, 1000);
     playerPicks = [];
     clearInterval(loopStop);
     console.log(turn);
-  } else if (
-    playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]
-  ) {
+  } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
     console.log("You lose");
-    playGame();
+    // You lost! Press start to play again.
     clearInterval(loopStop);
   }
   console.log(playerPicks.length);

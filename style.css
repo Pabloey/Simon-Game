@@ -24,8 +24,11 @@ body {
 }
 
 #yellow-button {
-  background-color: #ffd000;
+  background-color: #F57C00;
   color: black;
+}
+
+#clicked-yellow-button {
 }
 
 #red-button {
@@ -39,5 +42,5 @@ body {
 
 .all-buttons {
   padding: 100px;
-  border: 
+  border: ;
 }
