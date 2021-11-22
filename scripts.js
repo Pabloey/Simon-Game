@@ -23,7 +23,7 @@ let turn = false;
 let winOrLose = true;
 let loopTimes = 0;
 let loopStop;
-let playerTimeOut;
+let playerTime;
 
 //////////////////// Functions ////////////////////
 
@@ -163,15 +163,13 @@ const afterRoundFifteen = () => {
 
 // Function to display player turn and turn = true
 const playerTurn = () => {
-  let playerTime = clearTimeout
   turn = true;
   textDisplay.innerHTML = "Your turn!";
-  if (turn === true) {
-    let playerTime = setTimeout(() => {
-      textDisplay.innerHTML = "You lose! Took too long";
-      cpuPicks = [];
-    }, 5000);
-  }
+  playerTime = setTimeout(() => {
+    scoreDisplay.innerHTML = "-";
+    textDisplay.innerHTML = "You lose! Press start to play again.";
+    cpuPicks = [];
+  }, 5000);
 };
 
 // Computer reads through predetermined Array at start of game.
@@ -182,6 +180,7 @@ let computerChoice = () => {
     loopTimes = 0;
     score++;
     scoreDisplay.innerText = "Round " + score;
+    clearTimeout(playerTime);
     if (score <= 5) {
       roundStart();
       setTimeout(() => {
@@ -208,8 +207,8 @@ let computerChoice = () => {
 
 // Player Functions
 // If player guesses correctly, but still not at last round. Keep going = first (if)
-// If player guesses incorretly, reset game to 0, clear arrays. Lose = third (else if)
-// If player guess correctly and array is equal to round amount. Win = second (else if)
+// If player guesses incorretly, reset game to 0, clear arrays. Lose = second (else if)
+// If player guess correctly and array is equal to round amount. Win = third (else if)
 let testChoice = () => {
   if (playerPicks.length === cpuPicks.length && playerPicks[score - 1] === cpuPicks[score - 1]) {
     turn = false;
@@ -218,11 +217,9 @@ let testChoice = () => {
     }, 1000);
     clearInterval(loopStop);
   } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
-    // You lost! Press start to play again.
     textDisplay.innerHTML = "You lost. Press Start to try again";
     clearInterval(loopStop);
   } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
-    // Good job go next round!
     turn = false;
     setTimeout(() => {
       computerChoice();
