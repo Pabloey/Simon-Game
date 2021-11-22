@@ -19,8 +19,51 @@ let winOrLose = true;
 let loopTimes = 0;
 let loopStop;
 
-//Computer pushes a number to array cpuPicks[]
-// Need to loop through numbers everytime. Make a loop that reads from start of Array and stops when it reaches playerPicks.length + 1
+// Play Game randomizes 21 numbers in cpuPicks array, runs computerChoice.
+let playGame = () => {
+  clearInterval(loopStop);
+  cpuPicks = [];
+  playerPicks = [];
+  for (let i = 0; i < 21; i++) {
+    let RNG = Math.floor(Math.random() * 4);
+    cpuPicks.push(RNG);
+  }
+  console.log(cpuPicks);
+  score = 0;
+  turn = false;
+  computerChoice();
+};
+
+// Will make colors blink when invoked
+let blinkGreen = () => {
+  greenButton.style.backgroundColor = "#9EE5DD";
+  setTimeout(() => {
+    greenButton.style.backgroundColor = "green";
+  }, 500);
+};
+
+let blinkYellow = () => {
+  yellowButton.style.backgroundColor = "#yellow";
+  setTimeout(() => {
+    yellowButton.style.backgroundColor = "#ffd000";
+  }, 500);
+};
+
+let blinkRed = () => {
+  redButton.style.backgroundColor = "#EE9781";
+  setTimeout(() => {
+    redButton.style.backgroundColor = "red";
+  }, 500);
+};
+
+let blinkBlue = () => {
+  blueButton.style.backgroundColor = "#9EE5DD";
+  setTimeout(() => {
+    blueButton.style.backgroundColor = "blue";
+  }, 500);
+};
+
+// Computer reads through predetermined Array at start of game.
 let computerChoice = () => {
   if (turn === false) {
     console.log("Score before number: " + score);
@@ -30,15 +73,19 @@ let computerChoice = () => {
     loopStop = setInterval(() => {
       if (loopTimes < score) {
         if (cpuPicks[loopTimes] === 0) {
+          blinkGreen();
           console.log("Green Clicked");
         }
         if (cpuPicks[loopTimes] === 1) {
+          blinkYellow();
           console.log("Yellow Clicked");
         }
         if (cpuPicks[loopTimes] === 2) {
+          blinkRed();
           console.log("Red Clicked");
         }
         if (cpuPicks[loopTimes] === 3) {
+          blinkBlue();
           console.log("Blue Clicked");
         } else if (loopTimes === score) {
           console.log("Players Turn");
@@ -46,15 +93,14 @@ let computerChoice = () => {
         loopTimes++;
       }
     }, 1000);
+    turn = true;
   }
-  turn = true;
 };
 
-//Player Functions
-// Three condtions to set
+// Player Functions
 // If player guesses correctly, but still not at last round. Keep going = first (if)
-// If player guess correctly and array is equal to round amount. Win
-// If player guesses incorretly, reset game to 0, clear arrays.
+// If player guess correctly and array is equal to round amount. Win = second (else if)
+// If player guesses incorretly, reset game to 0, clear arrays. Lose = third (else if)
 let testChoice = () => {
   if (
     playerPicks.length === cpuPicks.length &&
@@ -71,12 +117,14 @@ let testChoice = () => {
     playerPicks = [];
     clearInterval(loopStop);
     console.log(turn);
-  } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
+  } else if (
+    playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]
+  ) {
     console.log("You lose");
-    clearInterval(loopStop);
     playGame();
+    clearInterval(loopStop);
   }
-  console.log(playerPicks);
+  console.log(playerPicks.length);
 };
 
 // Event Listeners
@@ -84,24 +132,28 @@ let testChoice = () => {
 // Player can click on every button through these Event Listeners.
 greenButton.addEventListener("click", () => {
   if (turn === true) {
+    blinkGreen();
     playerPicks.push(0);
     testChoice();
   }
 });
 yellowButton.addEventListener("click", () => {
   if (turn === true) {
+    blinkYellow();
     playerPicks.push(1);
     testChoice();
   }
 });
 redButton.addEventListener("click", () => {
   if (turn === true) {
+    blinkRed();
     playerPicks.push(2);
     testChoice();
   }
 });
 blueButton.addEventListener("click", () => {
   if (turn === true) {
+    blinkBlue();
     playerPicks.push(3);
     testChoice();
   }
@@ -113,21 +165,6 @@ testButton.addEventListener("click", () => {
   computerChoice();
 });
 
-// Play Game randomizes 21 numbers in cpuPicks array, runs computerChoice.
-let playGame = () => {
-  clearInterval(loopStop);
-  cpuPicks = [];
-  playerPicks = [];
-  for (let i = 0; i < 3; i++) {
-    let RNG = Math.floor(Math.random() * 4);
-    cpuPicks.push(RNG);
-  }
-  console.log(cpuPicks);
-  score = 0;
-  computerChoice();
-};
-
 startButton.addEventListener("click", () => {
-  turn = false;
   playGame();
 });

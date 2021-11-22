@@ -1,5 +1,22 @@
-button {
-  color: white;
+body {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+/* div {
+  pointer-events: none;
+} */
+
+#main-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 #green-button {
@@ -7,7 +24,7 @@ button {
 }
 
 #yellow-button {
-  background-color: yellow;
+  background-color: #ffd000;
   color: black;
 }
 
@@ -17,4 +34,10 @@ button {
 
 #blue-button {
   background-color: blue;
+  color: white;
+}
+
+.all-buttons {
+  padding: 100px;
+  border: 
 }
