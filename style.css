@@ -4,7 +4,7 @@ body {
   display: grid;
   justify-content: center;
   align-content: center;
-  vertical-align: middle;
+  text-align: center;
   font-family: "Helvetica";
   color: white;
   background-color: #2e3532;

@@ -11,6 +11,10 @@ const testButton = document.getElementById("test-button");
 const startButton = document.getElementById("start-button");
 const textDisplay = document.getElementById("text-display");
 let scoreDisplay = document.getElementById("score-display");
+let greenPop = document.getElementById("green-pop");
+let yellowPop = document.getElementById("yellow-pop");
+let redPop = document.getElementById("red-pop");
+let bluePop = document.getElementById("blue-pop");
 
 let score = 0;
 let cpuPicks = [];
@@ -19,6 +23,7 @@ let turn = false;
 let winOrLose = true;
 let loopTimes = 0;
 let loopStop;
+let playerTimeOut;
 
 //////////////////// Functions ////////////////////
 
@@ -41,6 +46,7 @@ let playGame = () => {
 // Will make colors blink when invoked
 let blinkGreen = () => {
   greenButton.style.backgroundColor = "white";
+  greenPop.play();
   setTimeout(() => {
     greenButton.style.backgroundColor = "#b0db43";
   }, 400);
@@ -48,6 +54,7 @@ let blinkGreen = () => {
 
 let blinkYellow = () => {
   yellowButton.style.backgroundColor = "white";
+  yellowPop.play();
   setTimeout(() => {
     yellowButton.style.backgroundColor = "#f49d37";
   }, 400);
@@ -55,6 +62,7 @@ let blinkYellow = () => {
 
 let blinkRed = () => {
   redButton.style.backgroundColor = "white";
+  redPop.play();
   setTimeout(() => {
     redButton.style.backgroundColor = "#d72638";
   }, 400);
@@ -62,6 +70,7 @@ let blinkRed = () => {
 
 let blinkBlue = () => {
   blueButton.style.backgroundColor = "white";
+  bluePop.play();
   setTimeout(() => {
     blueButton.style.backgroundColor = "#3f88c5";
   }, 400);
@@ -154,8 +163,15 @@ const afterRoundFifteen = () => {
 
 // Function to display player turn and turn = true
 const playerTurn = () => {
+  let playerTime = clearTimeout
   turn = true;
   textDisplay.innerHTML = "Your turn!";
+  if (turn === true) {
+    let playerTime = setTimeout(() => {
+      textDisplay.innerHTML = "You lose! Took too long";
+      cpuPicks = [];
+    }, 5000);
+  }
 };
 
 // Computer reads through predetermined Array at start of game.
@@ -204,7 +220,6 @@ let testChoice = () => {
   } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
     // You lost! Press start to play again.
     textDisplay.innerHTML = "You lost. Press Start to try again";
-    scoreDisplay.innerHTML = "-";
     clearInterval(loopStop);
   } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
     // Good job go next round!
