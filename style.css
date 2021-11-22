@@ -20,11 +20,11 @@ body {
 }
 
 #green-button:hover {
-  background-color: white;
+border: white;
 }
 
 #yellow-button {
-  background-color: #f57c00;
+  background-color: yellow;
   color: black;
 }
 

@@ -29,7 +29,7 @@ let playGame = () => {
   clearInterval(loopStop);
   cpuPicks = [];
   playerPicks = [];
-  for (let i = 0; i < 21; i++) {
+  for (let i = 0; i < 20; i++) {
     let RNG = Math.floor(Math.random() * 4);
     cpuPicks.push(RNG);
   }
@@ -40,28 +40,28 @@ let playGame = () => {
 
 // Will make colors blink when invoked
 let blinkGreen = () => {
-  greenButton.style.backgroundColor = "#9EE5DD";
+  greenButton.style.backgroundColor = "white";
   setTimeout(() => {
     greenButton.style.backgroundColor = "green";
   }, 400);
 };
 
 let blinkYellow = () => {
-  yellowButton.style.backgroundColor = "yellow";
+  yellowButton.style.backgroundColor = "white";
   setTimeout(() => {
-    yellowButton.style.backgroundColor = "#F57C00";
+    yellowButton.style.backgroundColor = "yellow";
   }, 400);
 };
 
 let blinkRed = () => {
-  redButton.style.backgroundColor = "#EE9781";
+  redButton.style.backgroundColor = "white";
   setTimeout(() => {
     redButton.style.backgroundColor = "red";
   }, 400);
 };
 
 let blinkBlue = () => {
-  blueButton.style.backgroundColor = "#9EE5DD";
+  blueButton.style.backgroundColor = "white";
   setTimeout(() => {
     blueButton.style.backgroundColor = "blue";
   }, 400);
@@ -94,7 +94,7 @@ let computerChoice = () => {
           loopTimes++;
         }
       }, 1000);
-    } else if (score > 5 && score <= 9) {
+    } else if (score > 5 && score <= 10) {
       loopStop = setInterval(() => {
         if (loopTimes < score) {
           if (cpuPicks[loopTimes] === 0) {
@@ -113,7 +113,7 @@ let computerChoice = () => {
           loopTimes++;
         }
       }, 900);
-    } else if (score > 9 && score <= 13) {
+    } else if (score > 10 && score <= 15) {
       loopStop = setInterval(() => {
         if (loopTimes < score) {
           if (cpuPicks[loopTimes] === 0) {
@@ -132,7 +132,7 @@ let computerChoice = () => {
           loopTimes++;
         }
       }, 700);
-    } else if (score > 13) {
+    } else if (score > 15) {
       loopStop = setInterval(() => {
         if (loopTimes < score) {
           if (cpuPicks[loopTimes] === 0) {
@@ -161,18 +161,16 @@ let computerChoice = () => {
 // If player guesses incorretly, reset game to 0, clear arrays. Lose = third (else if)
 let testChoice = () => {
   if (playerPicks.length === cpuPicks.length && playerPicks[score - 1] === cpuPicks[score - 1]) {
-    console.log("You win");
     turn = false;
     setTimeout(() => {
       playGame();
     }, 1000);
     clearInterval(loopStop);
   } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
-    console.log("You lose");
     // You lost! Press start to play again.
+
     clearInterval(loopStop);
   } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
-    console.log("Good job, go next round");
     // Good job go next round!
     turn = false;
     setTimeout(() => {
@@ -180,9 +178,7 @@ let testChoice = () => {
     }, 1000);
     playerPicks = [];
     clearInterval(loopStop);
-    console.log(turn);
   }
-  console.log(playerPicks.length);
 };
 
 //////////////////// Event Listeners ////////////////////
