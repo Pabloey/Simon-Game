@@ -1,10 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
 body {
   display: grid;
   justify-content: center;
   align-content: center;
-  height: 100vh;
-  width: 100vw;
-  text-align: center;
+  vertical-align: middle;
+  font-family: "Helvetica";
+  color: white;
+  background-color: #2e3532;
 }
 
 #main-grid {
@@ -16,42 +19,35 @@ body {
 }
 
 #green-button {
-  background-color: green;
-}
-
-#green-button:hover {
-border: white;
+  background-color: #b0db43;
+  transition: 0.25s;
 }
 
 #yellow-button {
-  background-color: yellow;
+  background-color: #f49d37;
   color: black;
 }
 
-#yellow-button:hover {
-  background-color: white;
-}
-
 #red-button {
-  background-color: red;
-}
-#red-button:hover {
-  background-color: white;
+  background-color: #d72638;
 }
 
 #blue-button {
-  background-color: blue;
-  color: white;
-}
-
-#blue-button:hover {
-  background-color: white;
+  background-color: #3f88c5;
   color: white;
 }
 
 .all-buttons {
   padding: 100px;
-  border: 5px solid black;
-  border-radius: 10%;
-  transition: 0.25s;
+  border: 3px solid black;
+  border-radius: 50%;
+  transition: all 0.25s ease-in-out;
+}
+
+.all-buttons:hover {
+  border: 2px double white;
+}
+
+#test-button {
+  margin-top: 50px;
 }

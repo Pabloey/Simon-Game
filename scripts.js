@@ -42,123 +42,158 @@ let playGame = () => {
 let blinkGreen = () => {
   greenButton.style.backgroundColor = "white";
   setTimeout(() => {
-    greenButton.style.backgroundColor = "green";
+    greenButton.style.backgroundColor = "#b0db43";
   }, 400);
 };
 
 let blinkYellow = () => {
   yellowButton.style.backgroundColor = "white";
   setTimeout(() => {
-    yellowButton.style.backgroundColor = "yellow";
+    yellowButton.style.backgroundColor = "#f49d37";
   }, 400);
 };
 
 let blinkRed = () => {
   redButton.style.backgroundColor = "white";
   setTimeout(() => {
-    redButton.style.backgroundColor = "red";
+    redButton.style.backgroundColor = "#d72638";
   }, 400);
 };
 
 let blinkBlue = () => {
   blueButton.style.backgroundColor = "white";
   setTimeout(() => {
-    blueButton.style.backgroundColor = "blue";
+    blueButton.style.backgroundColor = "#3f88c5";
   }, 400);
 };
 
+// These functions control speeds after rounds 0, 5, 10, 15
+const roundStart = () => {
+  loopStop = setInterval(() => {
+    if (loopTimes < score) {
+      if (cpuPicks[loopTimes] === 0) {
+        blinkGreen();
+      }
+      if (cpuPicks[loopTimes] === 1) {
+        blinkYellow();
+      }
+      if (cpuPicks[loopTimes] === 2) {
+        blinkRed();
+      }
+      if (cpuPicks[loopTimes] === 3) {
+        blinkBlue();
+      } else if (loopTimes === score) {
+      }
+      loopTimes++;
+    }
+  }, 1000);
+};
+
+const afterRoundFive = () => {
+  loopStop = setInterval(() => {
+    if (loopTimes < score) {
+      if (cpuPicks[loopTimes] === 0) {
+        blinkGreen();
+      }
+      if (cpuPicks[loopTimes] === 1) {
+        blinkYellow();
+      }
+      if (cpuPicks[loopTimes] === 2) {
+        blinkRed();
+      }
+      if (cpuPicks[loopTimes] === 3) {
+        blinkBlue();
+      } else if (loopTimes === score) {
+      }
+      loopTimes++;
+    }
+  }, 900);
+};
+
+const afterRoundTen = () => {
+  loopStop = setInterval(() => {
+    if (loopTimes < score) {
+      if (cpuPicks[loopTimes] === 0) {
+        blinkGreen();
+      }
+      if (cpuPicks[loopTimes] === 1) {
+        blinkYellow();
+      }
+      if (cpuPicks[loopTimes] === 2) {
+        blinkRed();
+      }
+      if (cpuPicks[loopTimes] === 3) {
+        blinkBlue();
+      } else if (loopTimes === score) {
+      }
+      loopTimes++;
+    }
+  }, 800);
+};
+
+const afterRoundFifteen = () => {
+  loopStop = setInterval(() => {
+    if (loopTimes < score) {
+      if (cpuPicks[loopTimes] === 0) {
+        blinkGreen();
+      }
+      if (cpuPicks[loopTimes] === 1) {
+        blinkYellow();
+      }
+      if (cpuPicks[loopTimes] === 2) {
+        blinkRed();
+      }
+      if (cpuPicks[loopTimes] === 3) {
+        blinkBlue();
+      } else if (loopTimes === score) {
+      }
+      loopTimes++;
+    }
+  }, 700);
+};
+
+// Function to display player turn and turn = true
+const playerTurn = () => {
+  turn = true;
+  textDisplay.innerHTML = "Your turn!";
+};
+
 // Computer reads through predetermined Array at start of game.
-// Game speeds up after round 5 and
+// Run playerTurn after certain time depending on score.
 let computerChoice = () => {
   if (turn === false) {
+    textDisplay.innerHTML = "Wait for computer to finish";
     loopTimes = 0;
     score++;
-    scoreDisplay.innerText = score;
-    turn = true;
+    scoreDisplay.innerText = "Round " + score;
     if (score <= 5) {
-      loopStop = setInterval(() => {
-        if (loopTimes < score) {
-          if (cpuPicks[loopTimes] === 0) {
-            blinkGreen();
-          }
-          if (cpuPicks[loopTimes] === 1) {
-            blinkYellow();
-          }
-          if (cpuPicks[loopTimes] === 2) {
-            blinkRed();
-          }
-          if (cpuPicks[loopTimes] === 3) {
-            blinkBlue();
-          } else if (loopTimes === score) {
-          }
-          loopTimes++;
-        }
-      }, 1000);
+      roundStart();
+      setTimeout(() => {
+        playerTurn();
+      }, 1000 * score);
     } else if (score > 5 && score <= 10) {
-      loopStop = setInterval(() => {
-        if (loopTimes < score) {
-          if (cpuPicks[loopTimes] === 0) {
-            blinkGreen();
-          }
-          if (cpuPicks[loopTimes] === 1) {
-            blinkYellow();
-          }
-          if (cpuPicks[loopTimes] === 2) {
-            blinkRed();
-          }
-          if (cpuPicks[loopTimes] === 3) {
-            blinkBlue();
-          } else if (loopTimes === score) {
-          }
-          loopTimes++;
-        }
-      }, 900);
+      afterRoundFive();
+      setTimeout(() => {
+        playerTurn();
+      }, 900 * score);
     } else if (score > 10 && score <= 15) {
-      loopStop = setInterval(() => {
-        if (loopTimes < score) {
-          if (cpuPicks[loopTimes] === 0) {
-            blinkGreen();
-          }
-          if (cpuPicks[loopTimes] === 1) {
-            blinkYellow();
-          }
-          if (cpuPicks[loopTimes] === 2) {
-            blinkRed();
-          }
-          if (cpuPicks[loopTimes] === 3) {
-            blinkBlue();
-          } else if (loopTimes === score) {
-          }
-          loopTimes++;
-        }
-      }, 700);
+      afterRoundTen();
+      setTimeout(() => {
+        playerTurn();
+      }, 800 * score);
     } else if (score > 15) {
-      loopStop = setInterval(() => {
-        if (loopTimes < score) {
-          if (cpuPicks[loopTimes] === 0) {
-            blinkGreen();
-          }
-          if (cpuPicks[loopTimes] === 1) {
-            blinkYellow();
-          }
-          if (cpuPicks[loopTimes] === 2) {
-            blinkRed();
-          }
-          if (cpuPicks[loopTimes] === 3) {
-            blinkBlue();
-          } else if (loopTimes === score) {
-          }
-          loopTimes++;
-        }
-      }, 600);
+      afterRoundFifteen();
+      setTimeout(() => {
+        playerTurn();
+      }, 700 * score);
     }
   }
 };
 
 // Player Functions
 // If player guesses correctly, but still not at last round. Keep going = first (if)
-// If player guess correctly and array is equal to round amount. Win = second (else if)
 // If player guesses incorretly, reset game to 0, clear arrays. Lose = third (else if)
+// If player guess correctly and array is equal to round amount. Win = second (else if)
 let testChoice = () => {
   if (playerPicks.length === cpuPicks.length && playerPicks[score - 1] === cpuPicks[score - 1]) {
     turn = false;
@@ -168,7 +203,8 @@ let testChoice = () => {
     clearInterval(loopStop);
   } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
     // You lost! Press start to play again.
-
+    textDisplay.innerHTML = "You lost. Press Start to try again";
+    scoreDisplay.innerHTML = "-";
     clearInterval(loopStop);
   } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
     // Good job go next round!
@@ -214,10 +250,10 @@ blueButton.addEventListener("click", () => {
 });
 
 //Temporary CPU button
-testButton.addEventListener("click", () => {
-  // Make run after so many seconds. Don't pass after score turn..
-  computerChoice();
-});
+// testButton.addEventListener("click", () => {
+//   // Make run after so many seconds. Don't pass after score turn..
+//   computerChoice();
+// });
 
 startButton.addEventListener("click", () => {
   playGame();
