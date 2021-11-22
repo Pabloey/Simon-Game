@@ -15,6 +15,7 @@ let greenPop = document.getElementById("green-pop");
 let yellowPop = document.getElementById("yellow-pop");
 let redPop = document.getElementById("red-pop");
 let bluePop = document.getElementById("blue-pop");
+let timerDisplay = document.getElementById("timer-display");
 
 let score = 0;
 let cpuPicks = [];
@@ -24,6 +25,8 @@ let winOrLose = true;
 let loopTimes = 0;
 let loopStop;
 let playerTime;
+let count = 5;
+let countStop;
 
 //////////////////// Functions ////////////////////
 
@@ -32,6 +35,7 @@ let standBy = () => {};
 
 let playGame = () => {
   clearInterval(loopStop);
+  timerDisplay.innerHTML = count;
   cpuPicks = [];
   playerPicks = [];
   for (let i = 0; i < 20; i++) {
@@ -43,7 +47,19 @@ let playGame = () => {
   computerChoice();
 };
 
-// Will make colors blink when invoked
+let gameOver = () => {
+  scoreDisplay.innerHTML = "-";
+  textDisplay.innerHTML = "You lose! Press start to play again.";
+  cpuPicks = [];
+  playerPicks = [];
+  count = 5;
+  clearTimeout(playerTime);
+  clearInterval(loopStop);
+  clearInterval(countStop);
+};
+
+// Will make colors blink and play audio when invoked. https://stackoverflow.com/questions/18826147/javascript-audio-play-on-click
+// Running a function to return original color after some time. https://stackoverflow.com/questions/11901074/javascript-call-a-function-after-specific-time-period - found setInterval() via this link too.
 let blinkGreen = () => {
   greenButton.style.backgroundColor = "white";
   greenPop.play();
@@ -161,22 +177,31 @@ const afterRoundFifteen = () => {
   }, 700);
 };
 
-// Function to display player turn and turn = true
+// Function to display player turn and turn = true. 5 second timer or else gameOver();
 const playerTurn = () => {
   turn = true;
+  count = 5;
   textDisplay.innerHTML = "Your turn!";
   playerTime = setTimeout(() => {
-    scoreDisplay.innerHTML = "-";
-    textDisplay.innerHTML = "You lose! Press start to play again.";
-    cpuPicks = [];
+    gameOver();
+    clearInterval(countStop);
+    timerDisplay.innerHTML = 0;
   }, 5000);
+  countStop = setInterval(() => {
+    if (count > 0 && turn === true) {
+      count--;
+      timerDisplay.innerHTML = count;
+    }
+  }, 1000);
 };
 
 // Computer reads through predetermined Array at start of game.
 // Run playerTurn after certain time depending on score.
 let computerChoice = () => {
+  count = 5;
   if (turn === false) {
     textDisplay.innerHTML = "Wait for computer to finish";
+    timerDisplay.innerHTML = count;
     loopTimes = 0;
     score++;
     scoreDisplay.innerText = "Round " + score;
@@ -216,9 +241,10 @@ let testChoice = () => {
       playGame();
     }, 1000);
     clearInterval(loopStop);
+    clearInterval(countStop);
   } else if (playerPicks[playerPicks.length - 1] != cpuPicks[playerPicks.length - 1]) {
-    textDisplay.innerHTML = "You lost. Press Start to try again";
-    clearInterval(loopStop);
+    gameOver();
+    clearInterval(countStop);
   } else if (playerPicks[score - 1] === cpuPicks[score - 1]) {
     turn = false;
     setTimeout(() => {
@@ -226,6 +252,7 @@ let testChoice = () => {
     }, 1000);
     playerPicks = [];
     clearInterval(loopStop);
+    clearInterval(countStop);
   }
 };
 
@@ -261,7 +288,7 @@ blueButton.addEventListener("click", () => {
   }
 });
 
-//Temporary CPU button
+//Temporary test button
 // testButton.addEventListener("click", () => {
 //   // Make run after so many seconds. Don't pass after score turn..
 //   computerChoice();
