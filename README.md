@@ -31,7 +31,7 @@ Remaking it so you can enjoy online at any time. Drive you crazy again because y
   - Vanilla JavaScript
 
 - [Trello]() was used for planning
-- [Surge]() used to deploy
+- [Surge](http://vagabond-library.surge.sh/) used to deploy
 - [VS Code](https://code.visualstudio.com/) as text editor
 
 ---
