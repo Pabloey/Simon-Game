@@ -35,6 +35,7 @@ let standBy = () => {};
 
 let playGame = () => {
   clearInterval(loopStop);
+  clearInterval(countStop);
   timerDisplay.innerHTML = count;
   cpuPicks = [];
   playerPicks = [];
@@ -200,7 +201,7 @@ const playerTurn = () => {
 let computerChoice = () => {
   count = 5;
   if (turn === false) {
-    textDisplay.innerHTML = "Wait for computer to finish";
+    textDisplay.innerHTML = "Wait for Simon to finish";
     timerDisplay.innerHTML = count;
     loopTimes = 0;
     score++;
@@ -296,4 +297,8 @@ blueButton.addEventListener("click", () => {
 
 startButton.addEventListener("click", () => {
   playGame();
+  startButton.style.backgroundColor = "white";
+  setTimeout(() => {
+    startButton.style.backgroundColor = "turquoise";
+  }, 400);
 });

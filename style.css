@@ -1,11 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;700&display=swap");
+* {
+  margin: 1%;
+  font-family: Sora;
+  font-weight: 700;
+}
 body {
   display: grid;
   justify-content: center;
   align-content: center;
   text-align: center;
-  font-family: "Helvetica";
   color: white;
   background-color: #2e3532;
 }
@@ -16,7 +19,7 @@ body {
   align-content: center;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 1%;
+  gap: 2%;
 }
 
 #green-button {
@@ -38,6 +41,20 @@ body {
   color: white;
 }
 
+#start-button {
+  padding: 40px;
+  margin-top: 20px;
+  border: 3px solid black;
+  color: black;
+  background-color: turquoise;
+  transition: all 0.25s ease-in-out;
+}
+
+#start-button:hover {
+  background-color: yellowgreen;
+  color: white;
+}
+
 .all-buttons {
   padding: 100px;
   border: 3px solid black;
@@ -51,4 +68,10 @@ body {
 
 #test-button {
   margin-top: 50px;
+}
+
+#portfolio-link {
+  margin-top: 50px;
+  color: white;
+  text-decoration: none;
 }

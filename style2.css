@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;700&display=swap");
+* {
+  font-family: "Sora";
+  font-weight: 700;
+  text-decoration: none;
+}
+
+body {
+  display: grid;
+  font-family: "Sora";
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  text-align: center;
+  color: white;
+  background: linear-gradient(45deg, #fc354c, #0abfbc);
+  background-size: 200% 200%;
+}
+
+.grid-box {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10%;
+}
+
+.fa {
+  padding: 20px 80px;
+  color: white;
+  transition: all 0.25s ease-in-out;
+  border: 2px solid black;
+  font-size: large;
+}
+
+.fa:hover {
+  box-shadow: 10px 10px 15px black;
+}
+
+.fa-facebook {
+  width: 150px;
+  height: 25px;
+  background-color: #3b5998;
+}
+
+.fa-twitter {
+  width: 150px;
+  height: 25px;
+  background-color: #55acee;
+}
+
+.fa-google {
+  width: 150px;
+  height: 25px;
+  background: #dd4b39;
+}
+
+.fa-github {
+  width: 150px;
+  height: 25px;
+  background-color: #161b22;
+}
+
+.fa-codepen {
+  width: 150px;
+  height: 25px;
+  background-color: #131417;
+}
+
+.fa-linkedin {
+  width: 150px;
+  height: 25px;
+  background-color: #007bb5;
+}
+
+.simon-game {
+  width: 150px;
+  height: 25px;
+  background-color: #007bb5;
+  font-family: Sora;
+  font-weight: bold;
+  grid-column-start: 2;
+}
