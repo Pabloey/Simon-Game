@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Sora:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap");
 
 * {
   margin: 1%;
-  font-weight: 700;
   /* margin: 10px; */
 }
 body {
@@ -16,34 +15,56 @@ body {
   font-weight: 700;
 }
 
+#timer-display {
+  margin-bottom: 10%;
+}
 #main-grid {
   display: grid;
   justify-content: center;
   align-content: center;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 2%;
+  gap: 5%;
 }
 
 #green-button {
   background-color: #4caf50;
   border-radius: 50% 10% 10% 10%;
+  box-shadow: -15px -15px 50px rgb(76, 175, 80, 30%);
+}
+
+#green-button:hover {
+  transform: translate(-5px, -5px);
 }
 
 #yellow-button {
   background-color: #ffeb3b;
   border-radius: 10% 50% 10% 10%;
+  box-shadow: 15px -15px 50px rgb(255, 235, 59, 30%);
+}
+
+#yellow-button:hover {
+  transform: translate(5px, -5px);
 }
 
 #red-button {
   background-color: #f44336;
   border-radius: 10% 10% 10% 50%;
+  box-shadow: -15px 15px 50px rgb(244, 67, 54, 30%);
+}
+
+#red-button:hover {
+  transform: translate(-5px, 5px);
 }
 
 #blue-button {
   background-color: #2196f3;
-  color: white;
   border-radius: 10% 10% 50% 10%;
+  box-shadow: 15px 15px 50px rgb(33, 150, 243, 30%);
+}
+
+#blue-button:hover {
+  transform: translate(5px, 5px);
 }
 
 #start-button {
@@ -53,11 +74,12 @@ body {
   color: black;
   background-color: #009688;
   transition: all 0.25s ease-in-out;
+  font-size: 24px;
 }
 
 #start-button:hover {
-  background-color: yellowgreen;
   color: white;
+  font-size: 36px;
 }
 
 .all-buttons {

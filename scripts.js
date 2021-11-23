@@ -25,7 +25,7 @@ let winOrLose = true;
 let loopTimes = 0;
 let loopStop;
 let playerTime;
-let count = 5;
+let count = 10;
 let countStop;
 
 //////////////////// Functions ////////////////////
@@ -50,10 +50,10 @@ let playGame = () => {
 
 let gameOver = () => {
   scoreDisplay.innerHTML = "-";
-  textDisplay.innerHTML = "You lose! Press start to play again.";
+  textDisplay.innerHTML = "You lose! Start to play again.";
   cpuPicks = [];
   playerPicks = [];
-  count = 5;
+  count = 10;
   clearTimeout(playerTime);
   clearInterval(loopStop);
   clearInterval(countStop);
@@ -181,13 +181,13 @@ const afterRoundFifteen = () => {
 // Function to display player turn and turn = true. 5 second timer or else gameOver();
 const playerTurn = () => {
   turn = true;
-  count = 5;
+  count = 10;
   textDisplay.innerHTML = "Your turn!";
   playerTime = setTimeout(() => {
     gameOver();
     clearInterval(countStop);
     timerDisplay.innerHTML = 0;
-  }, 5000);
+  }, 10000);
   countStop = setInterval(() => {
     if (count > 0 && turn === true) {
       count--;
@@ -199,7 +199,7 @@ const playerTurn = () => {
 // Computer reads through predetermined Array at start of game.
 // Run playerTurn after certain time depending on score.
 let computerChoice = () => {
-  count = 5;
+  count = 10;
   if (turn === false) {
     textDisplay.innerHTML = "Wait for Simon";
     timerDisplay.innerHTML = count;
@@ -289,16 +289,10 @@ blueButton.addEventListener("click", () => {
   }
 });
 
-//Temporary test button
-// testButton.addEventListener("click", () => {
-//   // Make run after so many seconds. Don't pass after score turn..
-//   computerChoice();
-// });
-
 startButton.addEventListener("click", () => {
   playGame();
   startButton.style.backgroundColor = "white";
   setTimeout(() => {
-    startButton.style.backgroundColor = "turquoise";
+    startButton.style.backgroundColor = "#009688";
   }, 400);
 });
