@@ -14,9 +14,25 @@ body {
   text-align: center;
   color: white;
   background: linear-gradient(45deg, #fc354c, #0abfbc);
-  background-size: 200% 200%;
+  background-size: 150% 150%;
+  animation: background 10s infinite;
 }
 
+@keyframes background {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 50%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
+.front-name {
+  font-size: 36px;
+}
 .grid-box {
   display: grid;
   justify-content: center;
@@ -24,6 +40,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 10%;
+  margin-top: 80px;
 }
 
 .fa {
@@ -77,8 +94,8 @@ body {
 .simon-game {
   width: 150px;
   height: 25px;
-  background-color: #007bb5;
-  font-family: Sora;
+  background-color: #567973;
+  font-family: "Sora";
   font-weight: bold;
   grid-column-start: 2;
 }

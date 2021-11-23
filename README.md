@@ -66,3 +66,5 @@ _Rage ensues_
 [Fonts](https://fonts.google.com/) used were from Google Fonts.
 
 [Sounds:](https://www.fiftysounds.com/royalty-free-music/pop-sound-effects.html) Got pop sounds from here.
+
+[Background Inspiration:](https://codepen.io/hylobates-lar/pen/qBbQeON) Got my idea for background from this CodePen!

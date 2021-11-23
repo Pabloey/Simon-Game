@@ -65,7 +65,7 @@ let blinkGreen = () => {
   greenButton.style.backgroundColor = "white";
   greenPop.play();
   setTimeout(() => {
-    greenButton.style.backgroundColor = "#b0db43";
+    greenButton.style.backgroundColor = "#4CAF50";
   }, 400);
 };
 
@@ -73,7 +73,7 @@ let blinkYellow = () => {
   yellowButton.style.backgroundColor = "white";
   yellowPop.play();
   setTimeout(() => {
-    yellowButton.style.backgroundColor = "#f49d37";
+    yellowButton.style.backgroundColor = "#FFEB3B";
   }, 400);
 };
 
@@ -81,7 +81,7 @@ let blinkRed = () => {
   redButton.style.backgroundColor = "white";
   redPop.play();
   setTimeout(() => {
-    redButton.style.backgroundColor = "#d72638";
+    redButton.style.backgroundColor = "#F44336";
   }, 400);
 };
 
@@ -89,7 +89,7 @@ let blinkBlue = () => {
   blueButton.style.backgroundColor = "white";
   bluePop.play();
   setTimeout(() => {
-    blueButton.style.backgroundColor = "#3f88c5";
+    blueButton.style.backgroundColor = "#2196F3";
   }, 400);
 };
 
@@ -201,7 +201,7 @@ const playerTurn = () => {
 let computerChoice = () => {
   count = 5;
   if (turn === false) {
-    textDisplay.innerHTML = "Wait for Simon to finish";
+    textDisplay.innerHTML = "Wait for Simon";
     timerDisplay.innerHTML = count;
     loopTimes = 0;
     score++;
