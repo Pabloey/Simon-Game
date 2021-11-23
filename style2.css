@@ -38,7 +38,7 @@ body {
   justify-content: center;
   align-content: center;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   gap: 10%;
   margin-top: 80px;
 }
@@ -52,7 +52,9 @@ body {
 }
 
 .fa:hover {
-  box-shadow: 10px 10px 15px black;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.75);
+  position: relative;
+  transform: translate(-5px, -5px);
 }
 
 .fa-facebook {
@@ -97,5 +99,10 @@ body {
   background-color: #567973;
   font-family: "Sora";
   font-weight: bold;
+  grid-row-start: 4;
+  grid-column-start: 2;
+}
+
+.projects-tag {
   grid-column-start: 2;
 }
