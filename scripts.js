@@ -1,7 +1,7 @@
 //Smoke test
 console.log("hello, javascript still working");
 
-//////////////////// Main Components/DOM ////////////////////
+//////////////////// Main Components/DOM /////////////////////
 const yellowButton = document.getElementById("yellow-button");
 const greenButton = document.getElementById("green-button");
 const redButton = document.getElementById("red-button");
